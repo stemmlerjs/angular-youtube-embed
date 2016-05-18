@@ -71,6 +71,16 @@ angular.module('youtube-embed', ['ng'])
             return id;
         };
 
+        /*
+         * getIdFromURL()
+         *
+         * Use RegEx to strip the video id's from YouTube urls from its different formats.
+         * 
+         * @param String - url
+         * @return String - id
+         *
+         */
+
         Service.getTimeFromURL = function getTimeFromURL(url) {
             url = url || '';
 
@@ -115,6 +125,21 @@ angular.module('youtube-embed', ['ng'])
 
         Service.ready = false;
 
+        /*
+         * applyServiceIsReady()
+         *
+         * Sets Service.ready to true. 
+         * In the code, this is executed after:
+         *
+         * 1) The YouTube global object YT has been loaded (YT.loaded == 1)
+         * 2) YT.ready() callback
+         * 3) bind to onYouTubeIframeAPIReady event
+         * 
+         * @param String - url
+         * @return String - id
+         *
+         */
+
         function applyServiceIsReady() {
             $rootScope.$apply(function () {
                 Service.ready = true;
@@ -157,6 +182,7 @@ angular.module('youtube-embed', ['ng'])
             host: 'https://www.youtube.com'
         };
 
+        // Directive Object (isolate scope)
         return {
             restrict: 'EA',
             scope: {

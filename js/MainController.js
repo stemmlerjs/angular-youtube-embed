@@ -11,7 +11,21 @@ angular.module('myApp', ['youtube-embed'])
 
 		$scope.playerWidth = "300px";
 
-		$scope.playerCtrl;
+		// Ways to get ahold of our player 
+			$scope.playerCtrl;
 
+			// perhaps a better way to setup our controller is:
+			$scope.$on('youtube.player.ready', function ($event, player) {
+	    		console.log("player is ready!!!");
+	    		console.log(player);
+	  		});
 
 	}
+
+
+
+
+
+
+
+
